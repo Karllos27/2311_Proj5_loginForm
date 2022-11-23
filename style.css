@@ -1,0 +1,106 @@
+:root {
+    --color-Background-Gradient-Darker: #361999;
+    --color-Background-Gradient-Lighter: #78fff1;
+
+    --color-Form-Gradient-Darker:rgba(255, 255, 255, 0.05);
+    --color-Form-Gradient-Lighter: rgba(255, 255, 255, 0.35);
+
+    --color-Input-Gradient-Darker:rgba(255, 255, 255, 0.1);
+    --color-Input-Gradient-Lighter: rgba(255, 255, 255, 0.25);
+    --color-Input-Outline: rgb(255, 255, 255, 0.8);
+
+    --color-Shadow: rgba(0, 0, 0, 0.3);
+
+    --color-White-Text: rgb(255, 255, 255);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    align-items: center;
+    background: linear-gradient(
+        to top right, 
+        var(--color-Background-Gradient-Darker), 
+        var(--color-Background-Gradient-Lighter)
+    );
+    display: flex;
+    font-family: Helvetica, sans-serif;
+    font-size: 24px;
+    height: 100vh;
+    justify-content: center;
+    width: 100vw;
+}
+
+form {
+    background: linear-gradient(
+        to left,
+        var(--color-Form-Gradient-Darker),
+        var(--color-Form-Gradient-Lighter)
+    );
+    border-radius: 15px;
+    box-shadow: 0px 0px 24px 0 var(--color-Shadow);
+    max-width: 300px;
+    padding: 36px 24px;
+    text-align: center;
+}
+
+.form__input-container {
+    margin-bottom: 32px;
+    position: relative;
+}
+
+input,
+button {
+    background: linear-gradient(
+        to left,
+        var(--color-Input-Gradient-Darker),
+        var(--color-Input-Gradient-Lighter)
+    );
+    border: none;
+    border-radius: 18px;
+    box-shadow: 0px 0px 24px 0 var(--color-Shadow);
+    color: var(--color-White-Text);
+    font-size: 24px;
+    padding: 12px 24px;
+    transition: box-shadow 0.3s;
+}
+
+input{
+    width: 100%;
+}
+
+label {
+    color: var(--color-White-Text);
+    cursor: text;
+    font-style: italic;
+    left: 24px;
+    opacity: 0.4;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: left 0.3s, opacity 0.3s;
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label {
+    left: 200px;
+    opacity: 0;
+}
+
+input:hover,
+button:hover {
+    box-shadow: 0px 0px 12px 0 var(--color-Shadow);
+}
+
+input:focus,
+button:focus {
+    outline: solid 3px var(--color-Input-Outline);
+}
+
+button {
+    cursor: pointer;
+}
