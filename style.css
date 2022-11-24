@@ -2,15 +2,23 @@
     --color-Background-Gradient-Darker: #361999;
     --color-Background-Gradient-Lighter: #78fff1;
 
-    --color-Form-Gradient-Darker:rgba(255, 255, 255, 0.05);
-    --color-Form-Gradient-Lighter: rgba(255, 255, 255, 0.35);
+    --color-Button-After-Background: rgba(255, 255, 255, 0.5);
 
-    --color-Input-Gradient-Darker:rgba(255, 255, 255, 0.1);
-    --color-Input-Gradient-Lighter: rgba(255, 255, 255, 0.25);
+    --color-Bg-Dot: rgba(255, 255, 255, 0.3);
+
+    --color-Form-Gradient-Darker: rgba(255, 255, 255, 0.3);
+    --color-Form-Gradient-Lighter: rgba(255, 255, 255, 0.5);
+
+    --color-Form-Icon-Elements: rgba(255, 255, 255, 0.6);
+
+    --color-Form_Spacer: rgba(255, 255, 255, 0.55);
+
+    --color-Input-Gradient-Darker:rgba(0, 0, 0, 0.6);
+    --color-Input-Gradient-Lighter: rgba(0, 0, 0, 0.4);
     --color-Input-Outline: rgb(255, 255, 255, 0.8);
 
     --color-Shadow: rgba(0, 0, 0, 0.3);
-
+    
     --color-White-Text: rgb(255, 255, 255);
 }
 
@@ -32,6 +40,7 @@ body {
     font-size: 24px;
     height: 100vh;
     justify-content: center;
+    overflow: hidden;
     width: 100vw;
 }
 
@@ -41,10 +50,14 @@ form {
         var(--color-Form-Gradient-Darker),
         var(--color-Form-Gradient-Lighter)
     );
+    backdrop-filter: blur(10px);
     border-radius: 15px;
     box-shadow: 0px 0px 24px 0 var(--color-Shadow);
+    max-height: 100%;
     max-width: 300px;
     padding: 36px 24px;
+    overflow: auto;
+    overflow-x: hidden;
     text-align: center;
 }
 
@@ -66,7 +79,7 @@ button {
     color: var(--color-White-Text);
     font-size: 24px;
     padding: 12px 24px;
-    transition: box-shadow 0.3s;
+    transition: box-shadow 0.3s, outline 0.3s;
 }
 
 input{
@@ -103,4 +116,122 @@ button:focus {
 
 button {
     cursor: pointer;
+    overflow: hidden;
+    position: relative;
+}
+
+button:after {
+    background-color: var(--color-Button-After-Background);
+    content: "";
+    display: block;
+    height: 100px;
+    left: -70px;
+    position: absolute;
+    top: -50%;
+    transform: skewX(-15deg);
+    transition: left 0.2s linear;
+    width: 50px;
+}
+
+button:hover:after {
+    left: 110%;
+}
+
+.form__icon {
+    border: solid 3px var(--color-Form-Icon-Elements);
+    border-radius: 50%;
+    box-shadow: 0px 0px 24px 0 var(--color-Shadow);
+    height: 72px;
+    margin: 0 auto 24px;
+    overflow: hidden;
+    position: relative;
+    width: 72px;
+}
+
+.form__icon:before {
+    background: var(--color-Form-Icon-Elements);
+    bottom: 0;
+    border-radius: 100%;
+    content: "";
+    display: block;
+    height: 28px;
+    left: 4%;
+    position:absolute;
+    width: 60px;
+}
+
+.form__icon:after {
+    background: var(--color-Form-Icon-Elements);
+    bottom: 50%;
+    border-radius: 100%;
+    content: "";
+    display: block;
+    left: 50%;
+    height: 28px;
+    position:absolute;
+    transform: translate(-50%);
+    width: 28px;
+}
+
+.form__spacer {
+    background-color: var(--color-Form_Spacer);
+    border-radius: 100%;
+    height: 3px;
+    margin: 0 auto 32px;
+    width: 80%;
+}
+
+.bg {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.bg__dot {
+    background: linear-gradient(
+        to left,
+        var(--color-Background-Gradient-Lighter),
+        var(--color-Bg-Dot)
+    );
+    border-radius: 50%;
+    height: 10vh;
+    width: 10vh;
+}
+
+.bg__dot:nth-child(1) {
+    animation: move1 10s linear infinite;
+    height: 50vh;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 50vh;
+}
+
+.bg__dot:nth-child(2) {
+    animation: move2 5s linear infinite;
+    height: 30vh;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    width: 30vh;
+}
+
+@keyframes move1 {
+    from {
+        transform: translateY(-50vh);
+    }
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+@keyframes move2 {
+    from {
+        transform: translateY(50vh);
+    }
+    to {
+        transform: translateY(-80vh);
+    }
 }
