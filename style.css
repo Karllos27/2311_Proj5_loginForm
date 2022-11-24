@@ -15,10 +15,14 @@
 
     --color-Input-Gradient-Darker:rgba(0, 0, 0, 0.6);
     --color-Input-Gradient-Lighter: rgba(0, 0, 0, 0.4);
-    --color-Input-Outline: rgb(255, 255, 255, 0.8);
+    --color-Input-Outline: rgba(255, 255, 255, 0.8);
 
     --color-Shadow: rgba(0, 0, 0, 0.3);
     
+    --color-Webkit-Scrollbar-Track: rgb(212, 212, 212);
+    --color-Webkit-Scrollbar-Thumb: rgb(129, 129, 129);
+    --color-Webkit-Scrollbar-Thumb-Hover: rgb(83, 83, 83);
+
     --color-White-Text: rgb(255, 255, 255);
 }
 
@@ -201,18 +205,18 @@ button:hover:after {
 }
 
 .bg__dot:nth-child(1) {
-    animation: move1 10s linear infinite;
+    animation: move1 12s linear infinite;
     height: 50vh;
-    left: 0;
+    left: 15%;
     position: absolute;
     top: 0;
     width: 50vh;
 }
 
 .bg__dot:nth-child(2) {
-    animation: move2 5s linear infinite;
+    animation: move2 15s linear infinite;
     height: 30vh;
-    left: 50%;
+    right: 25%;
     position: absolute;
     top: 50%;
     width: 30vh;
@@ -234,4 +238,20 @@ button:hover:after {
     to {
         transform: translateY(-80vh);
     }
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+  
+::-webkit-scrollbar-track {
+    background: var(--color-Webkit-Scrollbar-Track);
+}
+   
+::-webkit-scrollbar-thumb {
+    background: var(--color-Webkit-Scrollbar-Thumb);
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-Webkit-Scrollbar-Thumb-Hover);
 }
